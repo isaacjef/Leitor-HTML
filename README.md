@@ -1,4 +1,4 @@
-# 🚀 Leitor HTML
+# 👓 Leitor HTML
 Objetivo: desenvolver um código que receba baixe código fonte do site de eventos e busque pelos dados dos palestrantes, através de REGEX, e salve-os num banco de dados.
 
 
