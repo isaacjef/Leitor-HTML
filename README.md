@@ -12,6 +12,7 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
 # 📘 Descrição das tarefas:
 ### (3) Imagens baixadas através da função baixarImagem():
     cujo parametro é a string URL da imagem a ser baixada
+
 ### (4) Formato do event.db:
     id INTEGER PRIMARY KEY AUTOINCREMENT;
     name VARCHAR(255) NOT NULL;
@@ -23,12 +24,16 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
      .
      ├── Busca-Palestrantes
      │   ├── src
-     │   │    └── Main.java
-     │   └── download
-     |        ├── imagem1.png 
-     |        └── imagem2.png    
+     │   │    ├── Main.java
+     │   |    └── Palestrante.java
+     │   ├── download
+     │   │    ├── imagem0.png 
+     │   │    ├── ...
+     │   │    └── imagem1.png
+     │   └── db
+     │        └── event.db
      ├── README.md
-     └── exemplo.json
+     └── pagina_baixada.txt
      .
 
 # 🔧 Principais Funções
