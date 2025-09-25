@@ -20,7 +20,7 @@ public class Main {
         // OBS: Ainda precisa tratar quando não houver imagem do palestrante
         String urlImagem = "https://eventos.ifgoiano.edu.br/media/static/palestrantes/Aleksander_Westphal_Muniz_oxqEnwS.png";
         for(int i = 0; i<2; i++)
-            baixarImagen(urlImagem, ""+i);
+            baixarImagen(urlImagem, "imagem"+i);
         
         try {
             //Baixar página html e passar para txt
@@ -60,7 +60,7 @@ public class Main {
             URL url2 = new URL(urlImagem);
             RenderedImage imagem = ImageIO.read(url2);
             System.out.println("Imagem : " + imagem);
-            Path caminhoArquivo = Paths.get("imagem" + nomeImagem + ".png");
+            Path caminhoArquivo = Paths.get(nomeImagem + ".png");
             String caminhoPasta = System.getProperty("user.dir") + File.separator + "download\\";
             File arquivo = new File(caminhoPasta + caminhoArquivo);
 
