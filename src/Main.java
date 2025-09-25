@@ -7,9 +7,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;;
 
 public class Main {
@@ -18,8 +16,11 @@ public class Main {
         String urlDaPagina = "https://eventos.ifgoiano.edu.br/integra2025/"; // Substitua pelo URL da página que quer baixar
         String nomeArquivo = "pagina_baixada.txt";
 
+        // Exemplo aplicação da função baixarImagem
+        // OBS: Ainda precisa tratar quando não houver imagem do palestrante
         String urlImagem = "https://eventos.ifgoiano.edu.br/media/static/palestrantes/Aleksander_Westphal_Muniz_oxqEnwS.png";
-
+        for(int i = 0; i<2; i++)
+            baixarImagen(urlImagem, ""+i);
         
         try {
             //Baixar página html e passar para txt
@@ -35,15 +36,33 @@ public class Main {
 
             System.out.println("Página baixada com sucesso para: " + nomeArquivo); // MBallem
 
-            //Imagem
+            reader.close();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*
+     * Função para baixar imagem para pasta "download" e 
+     * pode retornar o caminho da imagem para armazenamento na classe Palestrante
+     * 
+     * Deve ser chamada sempre que encontrar um palestrante para baixar sua imagem e
+     * armazenar o diretório salvo.
+     * 
+     * @param urlIlagem: Tipo string
+     * @param nomeImagem: referência para não criar imagem com nome duplicado
+     * 
+     * @return arquivo.getAbsolutePath(): É a String que armazena o diretório da imagem salva
+     */
+    public static void baixarImagen(String urlImagem, String nomeImagem){
+        try{
             URL url2 = new URL(urlImagem);
-            //BufferedImage imagem = ImageIO.read(url2);
             RenderedImage imagem = ImageIO.read(url2);
             System.out.println("Imagem : " + imagem);
-            Path caminhoArquivo = Paths.get("imagem_baixada111.png");
-            File arquivo = caminhoArquivo.toFile();
-            //File arquivo = new File("C:\\Users\\2023108203030144\\Downloads\\Teste");
-            //System.out.println("A | : " + arquivo);
+            Path caminhoArquivo = Paths.get("imagem" + nomeImagem + ".png");
+            String caminhoPasta = System.getProperty("user.dir") + File.separator + "download\\";
+            File arquivo = new File(caminhoPasta + caminhoArquivo);
 
             boolean sucesso = ImageIO.write(imagem, "png", arquivo);
 
@@ -52,11 +71,10 @@ public class Main {
             } else {
                 System.out.println("ERRO");
             }
-
-            reader.close();
-            writer.close();
-        } catch (Exception e) {
+        } catch(Exception e){
             e.printStackTrace();
         }
+        // Criar catch para pegar imagem padrão quando não houver imagem ao poalestrante em questão.
+        
     }
 }
