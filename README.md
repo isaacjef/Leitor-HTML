@@ -4,7 +4,7 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
 
 
 # 📜 Tarefas:
-    (1) [  ] Extrair código fonte o site de eventos e salvar em txt;
+    (1) [ Feito ] Extrair código fonte o site de eventos e salvar em txt;
     (2) [  ] Ler TXT para extrair os dados dos palestrantes;
     (3) [ Feito ] Baixar as imagens de cada palestrante deve ser salva na pasta download;
     (4) [  ] Criar banco de dados chamado event.db com os dados dos palestrantes.
@@ -25,7 +25,7 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
      ├── Busca-Palestrantes
      │   ├── src
      │   │    ├── Main.java
-     │   |    └── Palestrante.java
+     │   │    └── Palestrante.java
      │   ├── download
      │   │    ├── imagem0.png 
      │   │    ├── ...
