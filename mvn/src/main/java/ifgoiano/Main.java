@@ -8,6 +8,10 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javax.imageio.ImageIO;
+import java.awt.image.RenderedImage;
 
 public class Main {
 
@@ -42,5 +46,27 @@ public class Main {
         } catch (Exception e) {
             System.err.println("Generic Error: " + e.getMessage());
         }
+    }
+
+    public static void baixarImagen(String urlImagem, String nomeImagem){
+        try{
+            URL url2 = new URL(urlImagem);
+            RenderedImage imagem = ImageIO.read(url2);
+            //System.out.println("Imagem : " + imagem);
+            Path caminhoArquivo = Paths.get(nomeImagem + ".png");
+            String caminhoPasta = System.getProperty("user.dir") + File.separator + "download\\";
+            File arquivo = new File(caminhoPasta + caminhoArquivo);
+
+            boolean sucesso = ImageIO.write(imagem, "png", arquivo);
+
+            if (sucesso) {
+                System.out.println("Imagem salva com sucesso em: " + arquivo.getAbsolutePath());
+            } else {
+                System.out.println("ERRO");
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        // Criar catch para pegar imagem padrão quando não houver imagem ao poalestrante em questão.
     }
 }
