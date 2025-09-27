@@ -12,6 +12,8 @@ public class TratarDados {
     
     //public void read(BufferedReader reader) {
     public void readTxt() throws FileNotFoundException {
+        Palestrante palestrante = new Palestrante("", "", "", "", "");
+
         //Definição das expressões regulares
         Pattern regexParticipante = Pattern.compile("id=\"Palestrante\\d+\"");
         //alt=" + regexParticipante utilizado para evitar que outras imagens que nao sejam a dos participantes, sejam coletadas.
@@ -37,7 +39,10 @@ public class TratarDados {
                 case 0:
                     Matcher matcherParticipante = regexParticipante.matcher(texto);
                     if (matcherParticipante.find()) {
-                        System.out.println(matcherParticipante.group());
+                        String[] id = matcherParticipante.group(0).split("\"Palestrante|\"");
+                        System.out.println(id[1]);
+
+                        palestrante.setId(id[1]);
                         status = 1;
                     }
                     break;
@@ -51,25 +56,34 @@ public class TratarDados {
                 case 2:
                     Matcher matcherNome = regexNome.matcher(texto);
                     if (matcherNome.find()) {
-                        System.out.println("Nome" + matcherNome.group(0));
+                        //System.out.println(matcherNome.group(0).split("<h4>|</4>"));
+                        String[] name = matcherNome.group(0).split("<h4>|</h4>");
+                        System.out.println(name[1]);
+                        palestrante.setName(name[1]);
                         status = 3;
                     }
                     break;
                 case 3:
                     Matcher matcherInstituicao = regexInstituicao.matcher(texto);
                     if (matcherInstituicao.find()) {
-                        System.out.println(matcherInstituicao.group());
+                        String[] work = matcherInstituicao.group(0).split("<h6>|</h6>");
+                        System.out.println(work[1]);
+                        palestrante.setWork(work[1]);
                         status = 4;
                     }
                     break;
                 case 4:
                     Matcher matcherEmail = regexEmail.matcher(texto);
                     if (matcherEmail.find()) {
-                        System.out.println(matcherEmail.group());
+                        String[] email = matcherEmail.group(0).split("<p>|</p>");
+                        System.out.println(email[1]);
+                        palestrante.setEmail(email[1]);
+
                         System.out.println("");
                         status = 0;
                     }
                     break;
+
             }
         }
 
