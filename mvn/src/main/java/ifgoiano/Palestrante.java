@@ -9,8 +9,8 @@ public class Palestrante {
 
     public Palestrante(String id, String name, String work, String email, String image){
         this.name = name;
-        this.email = email;
         this.work = work;
+        this.email = email;
         this.diretorioImage = image;
     }
 
