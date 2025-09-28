@@ -18,17 +18,21 @@ public class Database {
 
     public void listarPalestrantes() throws SQLException {
         var stmt = this.conn.createStatement();
-
+        
+        // Verificar se rs é null, e tratar -> "Nenhum retorno para a query"
         ResultSet rs = stmt.executeQuery("SELECT * FROM Speaker");
-        while(rs.next()) 
-        {
-            System.out.println("ID: " + rs.getInt("id") +  
-                " Nome: " + rs.getString("name") +
-                " Local de Trabalho: " + rs.getString("work") +
-                " E-mail: " + rs.getString("email") + 
-                " Imagem: " + rs.getString("image"));
+        try {
+            while(rs.next()) 
+            {
+                System.out.println("ID: " + rs.getInt("id") +  
+                    " Nome: " + rs.getString("name") +
+                    " Local de Trabalho: " + rs.getString("work") +
+                    " E-mail: " + rs.getString("email") + 
+                    " Imagem: " + rs.getString("image"));
+            }
+        } catch (SQLException e) {
+            System.err.println("SQLException -> " + e.getMessage());
         }
-
     }
 
     public void inserirPalestrantes(ArrayList<Palestrante> palestrantes){
@@ -40,7 +44,7 @@ public class Database {
     }
 
     public void inserirDados(String name, String email, String work, String image){
-        String insertSql = "INSERT INTO palestrant (name, email, work, image) VALUES (?, ?, ?, ?)";
+        String insertSql = "INSERT INTO Speaker (name, email, work, image) VALUES (?, ?, ?, ?)";
 
         if (name.isEmpty() || email.isEmpty() || work.isEmpty() || image.isEmpty()) {
             System.out.println("Palestrante não foi inserido no banco de dados! Dados incompletos.");
@@ -55,7 +59,7 @@ public class Database {
                 pstmt.executeUpdate();
             } catch (SQLException e) {
                 // TODO: handle exception
-                System.err.println(e.getMessage());
+                System.err.println("SQLException! Erro na inserção de dados: " + e.getMessage());
             }
         }
     }
@@ -108,6 +112,7 @@ public class Database {
             String url = "jdbc:sqlite:"+ caminhoPasta +"\\db\\" + this.nomeDB + ".db";
 
             this.conn = DriverManager.getConnection(url);
+            this.criarTabela();
         } catch (SQLException e) {
             // TODO: handle exception
             System.err.println(e.getMessage());

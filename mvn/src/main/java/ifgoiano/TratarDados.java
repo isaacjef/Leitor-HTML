@@ -1,41 +1,103 @@
 package ifgoiano;
 
+import java.awt.image.RenderedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.imageio.ImageIO;
+
 //https://www.baeldung.com/java-matcher-find-vs-matches
 
 public class TratarDados {
 
+    public void baixarHTML(String urlPagina, String nomeArquivo) {
+        try {
+            URL url = new URI(urlPagina).toURL();
+            BufferedWriter writer;
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) {
+                writer = new BufferedWriter(new FileWriter(nomeArquivo));
+                String linha;
+                while ((linha = reader.readLine()) != null) {
+                    writer.write(linha);
+                    writer.newLine();
+                }
+                System.out.println("Página baixada com sucesso para: " + nomeArquivo);
+            }
+
+            writer.close();
+        } catch (IOException e) {
+           System.err.println("Error reading the file: " + e.getMessage());
+        } catch (URISyntaxException e) {
+           System.err.println("Error na sintaxe URI: " + e.getMessage());
+        }
+    }
+
+    public String baixarImagem(String urlImagem, String nomeImagem) {
+        File arquivo = null;
+
+        try{
+            URL url2 = new URI(urlImagem).toURL();
+            RenderedImage imagem = ImageIO.read(url2);
+            //System.out.println("Imagem : " + imagem);
+            Path caminhoArquivo = Paths.get(nomeImagem + ".png");
+            String caminhoPasta = System.getProperty("user.dir") + File.separator + "download\\";
+            arquivo = new File(caminhoPasta + caminhoArquivo);
+
+            boolean sucesso = ImageIO.write(imagem, "png", arquivo);
+
+            if (sucesso) {
+                System.out.println("Imagem salva com sucesso em: " + arquivo.getAbsolutePath());
+            } else {
+                System.out.println("ERRO! Imagem não salva.");
+                arquivo = null;
+            }
+        } catch(IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch(URISyntaxException e) {
+            e.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return arquivo.getAbsolutePath();
+        // Criar catch para pegar imagem padrão quando não houver imagem do palestrante em questão.
+    }
+
     public ArrayList<Palestrante> readTxt() throws FileNotFoundException {
 
-        //Definição das expressões regulares
+        //Definição das expressões regulares, para filtrar os dados desejados.
         Pattern regexParticipante = Pattern.compile("id=\"Palestrante\\d+\"");
-        //alt=" + regexParticipante utilizado para evitar que outras imagens que nao sejam a dos participantes, sejam coletadas.
         Pattern regexImagem = Pattern.compile("<img src=\"\\/.+\\.(png|jpg)\" alt=\"Palestrante\"");
-
-        //Tentei usar esse padrão pra encontrar a div onde o h4 e o h6 estavam, mas nao precisa, pois o scanner lê cada linha até o fim
-        //Após ler o primeiro participante, ja garantimos que o nome (h4) e o instituto (h6) serão os respectivos a cada participante
-        //Pattern regexModal = Pattern.compile("<div claas=\"modal-title\">, <h4>(.+), <h6>(.+)");
         Pattern regexNome = Pattern.compile("<h4>.+");
         Pattern regexInstituicao = Pattern.compile("<h6>.+");
-
         Pattern regexEmail = Pattern.compile("<p>.+");
+        //O scanner lê cada linha até o fim -> Após ler o primeiro participante, já garantimos que o nome (h4), o instituto (h6)
+        //E os demais dados serão os respectivos a cada participante.
 
-        //Ler o arquivo .txt convertido
-        //Podemos passar o diretório via parâmetro
         String diretorioProjeto = System.getProperty("user.dir");
         Scanner sc = new Scanner(new File(diretorioProjeto + "/eventos_ifgoiano.txt"));
 
-        //variavel para controlar o switch
-        int status = 0;
         ArrayList<Palestrante> array_aux = new ArrayList<>();
-        Palestrante palestrante = new Palestrante("", "", "", "", "imagem");
+        Palestrante palestrante = new Palestrante("", "", "", "", "");
 
+        //variavel de controle do switch
+        int status = 0;
+
+        //Leitura linha por linha do arquivo txt
         while (sc.hasNextLine()) {
             String texto = sc.nextLine();
 
@@ -52,7 +114,18 @@ public class TratarDados {
                 case 1 -> {
                     Matcher matcherImagem = regexImagem.matcher(texto);
                     if (matcherImagem.find()) {
-                        //System.out.println(matcherImagem.group());
+                        /* Como o site de eventos está offline, não armazenaremos o diretório da imagem no BD.
+                        // Somente se o site retornar.
+                        String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
+                        String urlImg = "https://eventos.ifgoiano.edu.br/integra2025" + imagem[1];
+                        String[] palestranteImg = imagem[1].split("/media/static/palestrantes/"+"|/static//assets/images/"+ "|.png");
+                        
+                        this.baixarImagem(urlImg, palestranteImg[1]);*/
+
+                        // /media/static/palestrantes/[nome...].png
+                        String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
+                        palestrante.setDiretorioImage(imagem[1]);
+
                         status = 2;
                     }
                 }
@@ -86,7 +159,6 @@ public class TratarDados {
                     }
                 }
             }
-
         }
         sc.close();
 
