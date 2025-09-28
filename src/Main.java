@@ -7,40 +7,33 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.*;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import java.awt.image.RenderedImage;;
 
 public class Main {
 
     public static void main(String[] args) {
-        String urlDaPagina = "https://eventos.ifgoiano.edu.br/integra2025/"; // Substitua pelo URL da página que quer baixar
-        String nomeArquivo = "pagina_baixada.txt";
+        //connect();
+        Palestrante pale = new Palestrante("1", "null", "nullt", "null@gmail", "null.png");
+        Palestrante pale1 = new Palestrante("2", "alexandre", "casa", "alexandre@gmail", "alexandre_imagem.png");
+        ArrayList<Palestrante> pales = new ArrayList<>();
+        pales.add(pale);
+        pales.add(pale1);
 
-        // Exemplo aplicação da função baixarImagem
-        // OBS: Ainda precisa tratar quando não houver imagem do palestrante
-        String urlImagem = "https://eventos.ifgoiano.edu.br/media/static/palestrantes/Aleksander_Westphal_Muniz_oxqEnwS.png";
-        for(int i = 0; i<2; i++)
-            baixarImagen(urlImagem, "imagem"+i);
+        Database event = new Database("event2");
+        System.out.println("Conexão; "+ event.connect());
+        event.deletarTabela();
+        System.out.println("Desconexão; "+ event.desconnect());
         
-        try {
-            //Baixar página html e passar para txt
-            URL url = new URL(urlDaPagina);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo));
+        System.out.println("Conexão; "+ event.connect());
+        event.criarTabela();
+        event.inserirPalestrantes(pales);
 
-            String linha;
-            while ((linha = reader.readLine()) != null) {
-                writer.write(linha);
-                writer.newLine();
-            }
+        System.out.println("Desconexão; "+ event.desconnect());
 
-            System.out.println("Página baixada com sucesso para: " + nomeArquivo); // MBallem
-
-            reader.close();
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /*
@@ -53,9 +46,10 @@ public class Main {
      * @param urlIlagem: Tipo string
      * @param nomeImagem: referência para não criar imagem com nome duplicado
      * 
-     * @return arquivo.getAbsolutePath(): É a String que armazena o diretório da imagem salva
+     * @return arquivo.getAbsolutePath(); É a String que armazena o diretório da imagem salva
+     *         ↑ pode servir de retorno ↑
      */
-    public static void baixarImagen(String urlImagem, String nomeImagem){
+    public static String baixarImagen(String urlImagem, String nomeImagem){
         try{
             URL url2 = new URL(urlImagem);
             RenderedImage imagem = ImageIO.read(url2);
@@ -71,10 +65,14 @@ public class Main {
             } else {
                 System.out.println("ERRO");
             }
+
+            return arquivo.getAbsolutePath();
         } catch(Exception e){
             e.printStackTrace();
         }
+        return null;
         // Criar catch para pegar imagem padrão quando não houver imagem ao poalestrante em questão.
         
     }
+
 }

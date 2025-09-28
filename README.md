@@ -4,29 +4,45 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
 
 
 # 📜 Tarefas:
-    (1) [  ] Extrair código fonte o site de eventos e salvar em txt;
+    (1) [ Feito ] Extrair código fonte o site de eventos e salvar em txt;
     (2) [  ] Ler TXT para extrair os dados dos palestrantes;
-    (3) [  ] Baixar as imagens de cada palestrante deve ser salva na pasta download;
-    (4) [  ] Criar banco de dados chamado event.db com os dados dos palestrantes.
+    (3) [ Feito ] Baixar as imagens de cada palestrante deve ser salva na pasta download;
+    (4) [ Feito ] Criar banco de dados chamado event.db com os dados dos palestrantes.
 
 # 📘 Descrição das tarefas:
-### (3) Formato do event.db:
+### (3) Baixar imagem:
+    Criada diretamente na classe Main.java
+    > A função baixarImagem():
+    → Salva imagem no diretório "download"
+    → Retorna o caminho da imagem, para armazenar no atributo do Palestrante
+
+### (4) Formato do event.db:
     id INTEGER PRIMARY KEY AUTOINCREMENT;
     name VARCHAR(255) NOT NULL;
     work VARCHAR(255) NOT NULL;
     email VARCHAR(255) NOT NULL;
     image VARCHAR(255) NOT NULL;
 
+    - Classe Database.java: Serve para criação do banco de dados com base no dados dos palestrantes
+
+
 # 📦 Disposição do programa
      .
      ├── Busca-Palestrantes
      │   ├── src
-     │   │    └── Main.java
-     │   └── download
-     |        ├── imagem1.png 
-     |        └── imagem2.png    
+     │   │    ├── Main.java
+     │   │    ├── Palestrante.java
+     │   │    └── Database.java
+     │   ├── download
+     │   │    ├── imagem1.png 
+     │   │    ├── ...
+     │   │    └── imagem2.png 
+     │   ├── db
+     │   │    └── event.db
+     │   └── lib
+     │        └── sqlite-jdbc-3.50.1.0.jar  
      ├── README.md
-     └── exemplo.json
+     └── pagina_baixada.txt
      .
 
 # 🔧 Principais Funções
