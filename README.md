@@ -6,17 +6,11 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
 # 📜 Tarefas:
     (1) [ Feito ] Extrair código fonte o site de eventos e salvar em txt;
     (2) [  ] Ler TXT para extrair os dados dos palestrantes;
-    (3) [ Feito ] Baixar as imagens de cada palestrante deve ser salva na pasta download;
-    (4) [ Feito ] Criar banco de dados chamado event.db com os dados dos palestrantes.
+    (3) [  ] Baixar as imagens de cada palestrante deve ser salva na pasta download;
+    (4) [  ] Criar banco de dados chamado event.db com os dados dos palestrantes.
 
 # 📘 Descrição das tarefas:
-### (3) Baixar imagem:
-    Criada diretamente na classe Main.java
-    > A função baixarImagem():
-    → Salva imagem no diretório "download"
-    → Retorna o caminho da imagem, para armazenar no atributo do Palestrante
-
-### (4) Formato do event.db:
+### (3) Formato do event.db:
     id INTEGER PRIMARY KEY AUTOINCREMENT;
     name VARCHAR(255) NOT NULL;
     work VARCHAR(255) NOT NULL;
@@ -30,17 +24,10 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
      .
      ├── Busca-Palestrantes
      │   ├── src
-     │   │    ├── Main.java
-     │   │    ├── Palestrante.java
-     │   │    └── Database.java
-     │   ├── download
-     │   │    ├── imagem1.png 
-     │   │    ├── ...
-     │   │    └── imagem2.png 
-     │   ├── db
-     │   │    └── event.db
-     │   └── lib
-     │        └── sqlite-jdbc-3.50.1.0.jar  
+     │   │    └── Main.java
+     │   └── download
+     |        ├── imagem1.png 
+     |        └── imagem2.png    
      ├── README.md
      └── pagina_baixada.txt
      .
@@ -50,7 +37,7 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
 
 
 # ✒️ Autores: 
-| [<img src="https://avatars.githubusercontent.com/u/99749672?v=4" width=115><br><sub>Gabriel Alexandre</sub>](https://https://github.com/aieFaria) |  [<img src="https://lh3.googleusercontent.com/a-/ALV-UjUSbAUZs8fIDLpE2IxgftQvn59uYcg5JtGjnglwGdLloMGgyXM=s50-c-k-no" width=115><br><sub>Isaac Jerferson</sub>](https://github.com/guilhermeonrails) |  [<img src="https://avatars.githubusercontent.com/u/160502160?v=4" width=115><br><sub>Raislson Bernardo</sub>](https://github.com/alexfelipe) |
+| [<img src="https://avatars.githubusercontent.com/u/99749672?v=4" width=115><br><sub>Gabriel Alexandre</sub>](https://https://github.com/aieFaria) |  [<img src="https://lh3.googleusercontent.com/a-/ALV-UjUSbAUZs8fIDLpE2IxgftQvn59uYcg5JtGjnglwGdLloMGgyXM=s50-c-k-no" width=115><br><sub>Isaac Jerferson</sub>](https://github.com/guilhermeonrails) |  [<img src="https://avatars.githubusercontent.com/u/160502160?v=4" width=115><br><sub>Railson Bernardo</sub>](https://github.com/alexfelipe) |
 | :---: | :---: | :---: |
 
 
