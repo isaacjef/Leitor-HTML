@@ -18,11 +18,12 @@ public class Main {
             event.connect();
             
             ArrayList<Palestrante> palestrantes = tratador.readTxt();
-            event.inserirPalestrantes(palestrantes);
+            //event.inserirPalestrantes(palestrantes);
             //event.deletarTabela();
-            event.listarPalestrantes();
+            //event.listarPalestrantes();
+            event.listarPalestrante();
 
-            //tratador.baixarImagem("https://ifgoiano.edu.br/home/images/TRIN/selecoes/pss2026_tec_tri/noticia_2026.png", "download_teste");
+
         } catch (Exception e) {
             System.err.println("Generic Error: " + e.getMessage());
         }

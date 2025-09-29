@@ -18,6 +18,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 
 //https://www.baeldung.com/java-matcher-find-vs-matches
@@ -46,12 +47,21 @@ public class TratarDados {
         }
     }
 
-    public String baixarImagem(String urlImagem, String nomeImagem) {
+    public String baixarImagem(String urlImagem, String nomeImagem) throws URISyntaxException, IOException {
         File arquivo = null;
+        RenderedImage imagem = null;
 
         try{
             URL url2 = new URI(urlImagem).toURL();
-            RenderedImage imagem = ImageIO.read(url2);
+            imagem = ImageIO.read(url2);
+        } catch(IIOException e) {
+            System.err.println("Erro no carregamento da URL -> javax.imageio.IIOException: Can't get input stream from URL!");
+            URL url = new URI("https://ifgoiano.edu.br/home/images/TRIN/selecoes/pss2026_tec_tri/noticia_2026.png").toURL();
+            imagem = ImageIO.read(url);
+            //e.printStackTrace();
+        }
+        
+        try {
             //System.out.println("Imagem : " + imagem);
             Path caminhoArquivo = Paths.get(nomeImagem + ".png");
             String caminhoPasta = System.getProperty("user.dir") + File.separator + "download\\";
@@ -62,22 +72,20 @@ public class TratarDados {
             if (sucesso) {
                 System.out.println("Imagem salva com sucesso em: " + arquivo.getAbsolutePath());
             } else {
-                System.out.println("ERRO! Imagem não salva.");
+                System.out.println("ERRO! Imagem não foi salva.");
                 arquivo = null;
             }
         } catch(IllegalArgumentException e) {
             e.printStackTrace();
-        } catch(URISyntaxException e) {
-            e.printStackTrace();
-        } catch(Exception e){
+        }  catch(Exception e){
             e.printStackTrace();
         }
 
         return arquivo.getAbsolutePath();
-        // Criar catch para pegar imagem padrão quando não houver imagem do palestrante em questão.
+        // Criar cat ch para pegar imagem padrão quando não houver imagem do palestrante em questão.
     }
 
-    public ArrayList<Palestrante> readTxt() throws FileNotFoundException {
+    public ArrayList<Palestrante> readTxt() throws FileNotFoundException, URISyntaxException, IOException {
 
         //Definição das expressões regulares, para filtrar os dados desejados.
         Pattern regexParticipante = Pattern.compile("id=\"Palestrante\\d+\"");
@@ -114,17 +122,15 @@ public class TratarDados {
                 case 1 -> {
                     Matcher matcherImagem = regexImagem.matcher(texto);
                     if (matcherImagem.find()) {
-                        /* Como o site de eventos está offline, não armazenaremos o diretório da imagem no BD.
-                        // Somente se o site retornar.
                         String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
                         String urlImg = "https://eventos.ifgoiano.edu.br/integra2025" + imagem[1];
                         String[] palestranteImg = imagem[1].split("/media/static/palestrantes/"+"|/static//assets/images/"+ "|.png");
                         
-                        this.baixarImagem(urlImg, palestranteImg[1]);*/
+                        this.baixarImagem(urlImg, palestranteImg[1]);
 
                         // /media/static/palestrantes/[nome...].png
-                        String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
-                        palestrante.setDiretorioImage(imagem[1]);
+                        //String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
+                        //palestrante.setDiretorioImage(imagem[1]);
 
                         status = 2;
                     }

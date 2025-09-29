@@ -16,6 +16,19 @@ public class Database {
         this.nomeDB = nomeDb;
     }
 
+    public void listarPalestrante() throws SQLException {
+        var stmt = this.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM Speaker WHERE ID=245");
+        while(rs.next()) 
+        {
+            System.out.println("ID: " + rs.getInt("id") +  
+                " Nome: " + rs.getString("name") +
+                " Local de Trabalho: " + rs.getString("work") +
+                " E-mail: " + rs.getString("email") + 
+                " Imagem: " + rs.getString("image"));
+        }
+    }
+
     public void listarPalestrantes() throws SQLException {
         var stmt = this.conn.createStatement();
         
