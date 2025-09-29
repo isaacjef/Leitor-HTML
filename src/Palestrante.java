@@ -14,6 +14,14 @@ public class Palestrante {
         this.diretorioImage = image;
     }
 
+    public Palestrante(){
+        // this.name = null;
+        // this.email = null;
+        // this.work = null;
+        // this.diretorioImage = null;
+        // this.id = null;
+    }
+
     public String getName() {
         return this.name;
     }

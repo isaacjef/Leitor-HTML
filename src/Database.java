@@ -1,6 +1,6 @@
 package src;
 
-import java.beans.Statement;
+//import java.beans.Statement;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class Database {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             // TODO: handle exception
-            System.err.println(e.getMessage());
+            System.err.println("SQLException! Erro na inserção de dados: " + e.getMessage());
         }
     }
 
@@ -74,6 +74,38 @@ public class Database {
         }
     }
 
+    public void listarPalestrante() throws SQLException {
+        var stmt = this.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM Speaker WHERE ID=800");
+        while(rs.next()) 
+        {
+            System.out.println("ID: " + rs.getInt("id") +  
+                " Nome: " + rs.getString("name") +
+                " Local de Trabalho: " + rs.getString("work") +
+                " E-mail: " + rs.getString("email") + 
+                " Imagem: " + rs.getString("image"));
+        }
+    }
+
+    public void listarPalestrantes() throws SQLException {
+        var stmt = this.conn.createStatement();
+        
+        // Verificar se rs é null, e tratar -> "Nenhum retorno para a query"
+        ResultSet rs = stmt.executeQuery("SELECT * FROM Speaker");
+        try {
+            while(rs.next()) 
+            {
+                System.out.println("ID: " + rs.getInt("id") +  
+                    " Nome: " + rs.getString("name") +
+                    " Local de Trabalho: " + rs.getString("work") +
+                    " E-mail: " + rs.getString("email") + 
+                    " Imagem: " + rs.getString("image"));
+            }
+        } catch (SQLException e) {
+            System.err.println("SQLException -> " + e.getMessage());
+        }
+    }
+
     /*
      * Conecta ao banco de dados
      * Cria um caso não exista
@@ -84,6 +116,8 @@ public class Database {
             String url = "jdbc:sqlite:"+ caminhoPasta +"\\db\\" + this.nomeDB + ".db";
 
             this.conn = DriverManager.getConnection(url);
+            this.deletarTabela();
+            this.criarTabela();
         } catch (SQLException e) {
             // TODO: handle exception
             System.err.println(e.getMessage());
