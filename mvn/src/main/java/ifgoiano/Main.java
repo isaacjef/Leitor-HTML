@@ -1,7 +1,5 @@
 package ifgoiano;
 
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -17,13 +15,11 @@ public class Main {
             Database event = new Database("event");
             event.connect();
             
-            ArrayList<Palestrante> palestrantes = tratador.readTxt();
+            //ArrayList<Palestrante> palestrantes = tratador.readTxt();
             //event.inserirPalestrantes(palestrantes);
             //event.deletarTabela();
             //event.listarPalestrantes();
             event.listarPalestrante();
-
-
         } catch (Exception e) {
             System.err.println("Generic Error: " + e.getMessage());
         }

@@ -122,15 +122,19 @@ public class TratarDados {
                 case 1 -> {
                     Matcher matcherImagem = regexImagem.matcher(texto);
                     if (matcherImagem.find()) {
+                        // /media/static/palestrantes/[nome...].png
+                        //String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
+                        //palestrante.setDiretorioImage(imagem[1]);
                         String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
                         String urlImg = "https://eventos.ifgoiano.edu.br/integra2025" + imagem[1];
                         String[] palestranteImg = imagem[1].split("/media/static/palestrantes/"+"|/static//assets/images/"+ "|.png");
                         
-                        this.baixarImagem(urlImg, palestranteImg[1]);
-
-                        // /media/static/palestrantes/[nome...].png
-                        //String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
-                        //palestrante.setDiretorioImage(imagem[1]);
+                        String diretorio = this.baixarImagem(urlImg, palestranteImg[1]);
+                        if (diretorio != null) {
+                            palestrante.setDiretorioImage(diretorio);
+                        } else {
+                            palestrante.setDiretorioImage("Sem diretório");
+                        }
 
                         status = 2;
                     }
