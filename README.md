@@ -4,10 +4,10 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
 
 
 # 📜 Tarefas:
-    (1) [  ] Extrair código fonte o site de eventos e salvar em txt;
-    (2) [  ] Ler TXT para extrair os dados dos palestrantes;
-    (3) [  ] Baixar as imagens de cada palestrante deve ser salva na pasta download;
-    (4) [  ] Criar banco de dados chamado event.db com os dados dos palestrantes.
+    (1) [ X ] Extrair código fonte o site de eventos e salvar em txt;
+    (2) [ X ] Ler TXT para extrair os dados dos palestrantes;
+    (3) [ X ] Baixar as imagens de cada palestrante deve ser salva na pasta download;
+    (4) [ X ] Criar banco de dados chamado event.db com os dados dos palestrantes.
 
 # 📘 Descrição das tarefas:
 ### (3) Formato do event.db:
@@ -21,15 +21,23 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
      .
      ├── Busca-Palestrantes
      │   ├── src
-     │   │    └── Main.java
-     │   └── download
-     |        ├── imagem1.png 
-     |        └── imagem2.png    
+     |   |    ├── Database.java
+     │   │    ├── Main.java
+     |   |    ├── Palestrante.java
+     |   |    └── TratarDados.java
+     │   ├── download
+     |   |    ├── imagem1.png 
+     |   |    └── imagem2.png
+     |   └── db
+     |        └── event.db    
      ├── README.md
-     └── exemplo.json
+     └── eventos_ifgoiano.txt
      .
 
 # 🔧 Principais Funções
+
+<img width="711" height="253" alt="image" src="https://github.com/user-attachments/assets/82df1856-3b47-4d7b-b4a3-8e891469aefc" />
+Abaixo, getters e setters
 
 
 
