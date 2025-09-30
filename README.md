@@ -34,6 +34,9 @@ Objetivo: desenvolver um código que receba baixe código fonte do site de event
      └── eventos_ifgoiano.txt
      .
 
+# 📚 Definição das classes:
+
+
 # 🔧 Principais Funções
 
 <img width="711" height="253" alt="image" src="https://github.com/user-attachments/assets/82df1856-3b47-4d7b-b4a3-8e891469aefc" />
