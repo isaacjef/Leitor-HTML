@@ -25,7 +25,7 @@
 # 📦 Disposição do programa:
      .
      ├── Leitor-HTML
-     │    ├── src
+     │    ├── mvn/src/main/java/ifgoiano
      │    │    ├── Database.java
      │    │    ├── Main.java
      │    │    ├── Palestrante.java
