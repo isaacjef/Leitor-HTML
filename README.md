@@ -64,7 +64,7 @@ Como os dados foram buscados e armazenados? Podemos dividir estes processos em d
 - O método readTxt(), que faz a busca de dados, é o responsável pela leitura e filtragem dos dados dos palestrantes. A filtragem é feita a partir de métodos da classe *java.util.regex*: `Pattern.compile(regex)`; `Pattern.matcher("linha do arquivo")`
 
 A expressão regular em Java é definida como uma String, porém, precisa ser compilada em uma instância da classe Matcher, para que seja possível utilizar os métodos de verificação de padrões dela, como `Matcher.matches()`, que fheca se um determinado conjunto de caracteres bate com a expressão regular ou o padrão definido:
-<img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
+> <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
 Com as expressões definidas, resta ler o conteúdo do site, que foi armazenado na pasta do projeto anteriormente. Para isso, utilizamos a classe Scanner sc, com dois métodos: `sc.hasNextLine()` dentro de um while, para verificar as linhas até o fim; `sc.nextLine()`, para armazenar a linha atual em uma variável texto.
 
 
