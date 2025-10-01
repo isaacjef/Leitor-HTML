@@ -39,8 +39,6 @@
 
 # 🔧 Principais Funções
 
-<img width="711" height="253" alt="image" src="https://github.com/user-attachments/assets/82df1856-3b47-4d7b-b4a3-8e891469aefc" />
-Abaixo, getters e setters
 
 
 
