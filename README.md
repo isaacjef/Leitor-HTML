@@ -58,14 +58,13 @@
 - **TratarDados:**
 As funções `baixarHTML()` e `baixarImagem()` funcionam de forma semelhante. Via parâmetro, definimos a URL, seja de algum site ou de alguma imagem hospedada, e o nome com o qual o arquivo será salvo. A partir da classe URL, cria-se objetos url com as urls informadas, e por fim, os arquivos são baixados via: `BufferedReader(new InputStreamReader(url.openStream()))` para HTML, e `ImageIO.read(url)`, para imagens.
 Para salvar o arquivo HTML como .txt, lê-se cara linha do objeto BufferedReader através de um while, e reescreve-se em um novo arquivo, com a classe `BufferedWriter` e o método `BufferedWriter.write()`. Já as imagens, são salvas no diretório programado com o método `ImageIO.write(...)`.
-> - Função ArrayList<Palestrante> readTxt(), que lê o arquivo .txt gerado pela função baixarTxt, especifica as expressões regulares em variáveis, e lê cada linha do arquivo de texto via Scanner - while (sc.hasNextLine()) - sendo que, para cada linha, as exp. regulares são verificadas com o método da classe Pattern [...]. Como o Scanner lê cada linha uma vez, podemos garantir que os dados serão pegos de forma ordenada e padronizada, podendo utilizar o switch...case para controlar os dados que serão limitados via regex. Os dados obtidos são imediatamente salvos em um objeto do tipo Palestrante, que no final, resultam em todos os palestrantes, e são armazenados em uma lista.
+
 Como os dados foram buscados e armazenados? Podemos dividir estes processos em duas etapas: busca e armazenamento.
 - O método readTxt(), que faz a busca de dados, é o responsável pela leitura e filtragem dos dados dos palestrantes. A filtragem é feita a partir de métodos da classe *java.util.regex*: `Pattern.compile(regex)`; `Pattern.matcher("linha do arquivo")`
 
 A expressão regular em Java é definida como uma String, porém, precisa ser compilada em uma instância da classe Matcher, para que seja possível utilizar os métodos de verificação de padrões dela, como `Matcher.matches()`, que checa se um determinado conjunto de caracteres bate com a expressão regular definida:
 > <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
 
-> .  .  .
 > <img width="414" height="163" alt="image" src="https://github.com/user-attachments/assets/627347b3-3da3-4048-b9bb-5a25ebbe4dcf" />
 
 
