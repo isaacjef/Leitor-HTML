@@ -17,7 +17,7 @@
     email VARCHAR(255) NOT NULL;
     image VARCHAR(255) NOT NULL;
 
-# 📦 Disposição do programa
+# 📦 Disposição do programa:
      .
      ├── Busca-Palestrantes
      │   ├── src
@@ -37,8 +37,9 @@
 # 📚 Classes:
 <img width="1013" height="684" alt="image" src="https://github.com/user-attachments/assets/a86c55d5-9baa-4743-9ecf-9c4e50517da9" />
 
+# ♻️ Fluxograma:
 
-# 🔧 Principais Funções
+# 🔧 Principais Funções:
 
 
 
