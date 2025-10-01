@@ -51,9 +51,6 @@
 - **Main:**
 <img width="1193" height="597" alt="image" src="https://github.com/user-attachments/assets/f1521501-d687-4373-b31b-baf91fce2bed" />
 
-- **Database:**
-<img width="1477" height="545" alt="image" src="https://github.com/user-attachments/assets/d213fe9b-c247-42cb-a8b7-0153d91b9c45" />
-
 # 🔧 Principais Funções:
 - **TratarDados:**
 
@@ -71,7 +68,11 @@ Assim, resta ler o conteúdo do site, que foi armazenado na pasta do projeto ant
 
 <img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
 
-- **Database:** O método `connect()` cria um objeto do tipo *Connection*, componente importante da biblioteca JDBC, e uma instância desta classe representa uma sessão com o BD. Aproveitamos para colocar o método `criarTabela()` dentro de `connect()`, para que a existência da tabela seja verificada a cada conexão, e que ela seja criada caso não exista. O método `inserirPalestrantes()`, exige que um *ArrayList<Palestrante>* seja passado via parâmetro - sendo que este arraylist pode ser obtido com o uso do método readTxt().  listarPalestrantes()
+- **Database:** O método `connect()` cria um objeto do tipo *Connection*, componente importante da biblioteca JDBC, e uma instância desta classe representa uma sessão com o BD. Aproveitamos para colocar o método `criarTabela()` dentro de `connect()`, para que a existência da tabela seja verificada a cada conexão, e que ela seja criada caso não exista.
+O método `inserirPalestrantes(...)`, exige que um *ArrayList<Palestrante>* seja passado via parâmetro - sendo que este arraylist pode ser obtido com o uso do método `readTxt()`. Para inserir múltiplos valores no SQL, e que não são estáticos, temos que utilizar um objeto da classe *PreparedStatement*, sendo que essa inserção individual de dados de palestrantes é feita pelo método `inserirDados(...)`.
+Por fim, o método `listarPalestrantes()`, que utiliza o método `executeQuery` com uma query de seleção simples: *(SELECT * FROM Speaker)*. O retorno deste método, é do tipo *ResultSet*, que pode ser vazio, ou um array, a depender dos dados inseridos na tabela, ou da busca utilizada.
+
+<img width="1477" height="545" alt="image" src="https://github.com/user-attachments/assets/d213fe9b-c247-42cb-a8b7-0153d91b9c45" />
 
 # ✒️ Autores: 
 | [<img src="https://avatars.githubusercontent.com/u/99749672?v=4" width=115><br><sub>Gabriel Alexandre</sub>](https://https://github.com/aieFaria) |  [<img src="https://lh3.googleusercontent.com/a-/ALV-UjUSbAUZs8fIDLpE2IxgftQvn59uYcg5JtGjnglwGdLloMGgyXM=s50-c-k-no" width=115><br><sub>Isaac Jerferson</sub>](https://github.com/guilhermeonrails) |  [<img src="https://avatars.githubusercontent.com/u/160502160?v=4" width=115><br><sub>Raislson Bernardo</sub>](https://github.com/alexfelipe) |
