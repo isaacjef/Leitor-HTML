@@ -53,7 +53,7 @@
 > - Função para baixar imagens de uma de uma determinada URL, baixada via método RenderedImage (caso queiram explicar), e armazenada em um diretório programado.
 > - Função ArrayList<Palestrante> readTxt(), que lê o arquivo .txt gerado pela função baixarTxt, especifica as expressões regulares em variáveis, e lê cada linha do arquivo de texto via Scanner - while (sc.hasNextLine()) - sendo que, para cada linha, as exp. regulares são verificadas com o método da classe Pattern [...]. Como o Scanner lê cada linha uma vez, podemos garantir que os dados serão pegos de forma ordenada e padronizada, podendo utilizar o switch...case para controlar os dados que serão limitados via regex. Os dados obtidos são imediatamente salvos em um objeto do tipo Palestrante, que no final, resultam em todos os palestrantes, e são armazenados em uma lista.
 <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
-
+```teste
 > - 
 > - 
 # ✒️ Autores: 
