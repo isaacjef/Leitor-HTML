@@ -51,9 +51,6 @@
 - **Main:**
 <img width="1193" height="597" alt="image" src="https://github.com/user-attachments/assets/f1521501-d687-4373-b31b-baf91fce2bed" />
 
-- **TratarDados:**
-<img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
-
 - **Database:**
 <img width="1477" height="545" alt="image" src="https://github.com/user-attachments/assets/d213fe9b-c247-42cb-a8b7-0153d91b9c45" />
 
