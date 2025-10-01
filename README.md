@@ -62,7 +62,7 @@ A expressão regular em Java é definida como uma String, porém, precisa ser co
 > <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
 
 Assim, resta ler o conteúdo do site, que foi armazenado na pasta do projeto anteriormente. Para isso, utilizamos a classe *Scanner sc*, com dois métodos: `sc.hasNextLine()` dentro de um while, para verificar as linhas até o fim; `sc.nextLine()`, para armazenar a linha atual em uma variável texto. 
-Os dados obtidos são armazenados em um objeto do tipo Palestrante, e são adicionados, ao fim da verificação, a uma lista de *ArrayList<Palestrante>*, que é o retorno do método `readTxt()`. Para certificar de que os conteúdo serão lidos na ordem certa, utilizamos a estrutura switch com uma variável de controle. É aqui que aplicamos a expressão compilada acima, com o método `matches()`:
+Os dados obtidos são armazenados em um objeto do tipo Palestrante, e são adicionados, ao fim da verificação, a uma lista de `ArrayList<Palestrante>`, que é o retorno do método `readTxt()`. Para certificar de que os conteúdo serão lidos na ordem certa, utilizamos a estrutura switch com uma variável de controle. É aqui que aplicamos a expressão compilada acima, com o método `matches()`:
 > <img width="414" height="163" alt="image" src="https://github.com/user-attachments/assets/627347b3-3da3-4048-b9bb-5a25ebbe4dcf" />
 
 <img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
@@ -72,7 +72,7 @@ Os dados obtidos são armazenados em um objeto do tipo Palestrante, e são adici
 
 O método `connect()` cria um objeto do tipo *Connection*, componente importante da biblioteca JDBC, e uma instância desta classe representa uma sessão com o BD. Aproveitamos para colocar o método `criarTabela()` dentro de `connect()`, para que a existência da tabela seja verificada a cada conexão, e que ela seja criada caso não exista.
 
-O método `inserirPalestrantes(...)`, exige que um *ArrayList<Palestrante>* seja passado via parâmetro - sendo que este arraylist pode ser obtido com o uso do método `readTxt()`. Para inserir múltiplos valores no SQL, e que não são estáticos, temos que utilizar um objeto da classe *PreparedStatement*, sendo que essa inserção individual de dados de palestrantes é feita pelo método `inserirDados(...)`.
+O método `inserirPalestrantes(...)`, exige que um `ArrayList<Palestrante>` seja passado via parâmetro - sendo que este arraylist pode ser obtido com o uso do método `readTxt()`. Para inserir múltiplos valores no SQL, e que não são estáticos, temos que utilizar um objeto da classe *PreparedStatement*, sendo que essa inserção individual de dados de palestrantes é feita pelo método `inserirDados(...)`.
 
 Por fim, o método `listarPalestrantes()`, que utiliza o método `executeQuery` com uma query de seleção simples: *(SELECT * FROM Speaker)*. O retorno deste método, é do tipo *ResultSet*, que pode ser vazio, ou um array, a depender dos dados inseridos na tabela, ou da busca utilizada.
 
