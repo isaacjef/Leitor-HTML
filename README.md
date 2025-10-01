@@ -1,5 +1,5 @@
 # 👓 Leitor HTML
-*Objetivo:* desenvolver um código que receba o código fonte do site de eventos, do IF Goiano, baixe a página e transforme em um arquivo .txt, e a partir daí, que busque pelos dados dos palestrantes, através de REGEX, e salve-os num banco de dados.
+**Objetivo:** desenvolver um código que receba o código fonte do site de eventos, do IF Goiano, baixe a página e transforme em um arquivo .txt, e a partir daí, que busque pelos dados dos palestrantes, através de REGEX, e salve-os num banco de dados.
 
 
 
