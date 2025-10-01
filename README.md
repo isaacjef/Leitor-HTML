@@ -63,7 +63,8 @@ Como os dados foram buscados e armazenados? Podemos dividir estes processos em d
 
 A expressão regular em Java é definida como uma String, porém, precisa ser compilada em uma instância da classe Matcher, para que seja possível utilizar os métodos de verificação de padrões dela, como `Matcher.matches()`, que checa se um determinado conjunto de caracteres bate com a expressão regular definida:
 > <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
-[imagem do método matches no código]
+> <img width="414" height="163" alt="image" src="https://github.com/user-attachments/assets/627347b3-3da3-4048-b9bb-5a25ebbe4dcf" />
+
 
 Assim, resta ler o conteúdo do site, que foi armazenado na pasta do projeto anteriormente. Para isso, utilizamos a classe Scanner sc, com dois métodos: `sc.hasNextLine()` dentro de um while, para verificar as linhas até o fim; `sc.nextLine()`, para armazenar a linha atual em uma variável texto. Para certificar de que os conteúdo serão lidos na ordem certa, utilizamos a estrutura switch com uma variável de controle
 <img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
