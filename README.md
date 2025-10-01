@@ -61,13 +61,16 @@ O método `readTxt()`, que faz a busca de dados, é o responsável pela leitura 
 A expressão regular em Java é definida como uma String, porém, precisa ser compilada em uma instância da classe Matcher, para que seja possível utilizar os métodos de verificação de padrões da mesma, como `Matcher.matches()`, que checa se um determinado conjunto de caracteres bate com a expressão regular definida:
 > <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
 
-Assim, resta ler o conteúdo do site, que foi armazenado na pasta do projeto anteriormente. Para isso, utilizamos a classe *Scanner sc*, com dois métodos: `sc.hasNextLine()` dentro de um while, para verificar as linhas até o fim; `sc.nextLine()`, para armazenar a linha atual em uma variável texto. Os dados obtidos são armazenados em um objeto do tipo Palestrante, e são adicionados, ao fim da verificação, a uma lista de *ArrayList<Palestrante>*, que é o retorno do método `readTxt()`. Para certificar de que os conteúdo serão lidos na ordem certa, utilizamos a estrutura switch com uma variável de controle. É aqui que aplicamos a expressão compilada acima, com o método `matches()`:
+Assim, resta ler o conteúdo do site, que foi armazenado na pasta do projeto anteriormente. Para isso, utilizamos a classe *Scanner sc*, com dois métodos: `sc.hasNextLine()` dentro de um while, para verificar as linhas até o fim; `sc.nextLine()`, para armazenar a linha atual em uma variável texto. 
+Os dados obtidos são armazenados em um objeto do tipo Palestrante, e são adicionados, ao fim da verificação, a uma lista de *ArrayList<Palestrante>*, que é o retorno do método `readTxt()`. Para certificar de que os conteúdo serão lidos na ordem certa, utilizamos a estrutura switch com uma variável de controle. É aqui que aplicamos a expressão compilada acima, com o método `matches()`:
 > <img width="414" height="163" alt="image" src="https://github.com/user-attachments/assets/627347b3-3da3-4048-b9bb-5a25ebbe4dcf" />
 
 <img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
 
 
-- **Database:** O método `connect()` cria um objeto do tipo *Connection*, componente importante da biblioteca JDBC, e uma instância desta classe representa uma sessão com o BD. Aproveitamos para colocar o método `criarTabela()` dentro de `connect()`, para que a existência da tabela seja verificada a cada conexão, e que ela seja criada caso não exista.
+- **Database:**
+
+O método `connect()` cria um objeto do tipo *Connection*, componente importante da biblioteca JDBC, e uma instância desta classe representa uma sessão com o BD. Aproveitamos para colocar o método `criarTabela()` dentro de `connect()`, para que a existência da tabela seja verificada a cada conexão, e que ela seja criada caso não exista.
 
 O método `inserirPalestrantes(...)`, exige que um *ArrayList<Palestrante>* seja passado via parâmetro - sendo que este arraylist pode ser obtido com o uso do método `readTxt()`. Para inserir múltiplos valores no SQL, e que não são estáticos, temos que utilizar um objeto da classe *PreparedStatement*, sendo que essa inserção individual de dados de palestrantes é feita pelo método `inserirDados(...)`.
 
@@ -78,6 +81,3 @@ Por fim, o método `listarPalestrantes()`, que utiliza o método `executeQuery` 
 # ✒️ Autores: 
 | [<img src="https://avatars.githubusercontent.com/u/99749672?v=4" width=115><br><sub>Gabriel Alexandre</sub>](https://https://github.com/aieFaria) |  [<img src="https://lh3.googleusercontent.com/a-/ALV-UjUSbAUZs8fIDLpE2IxgftQvn59uYcg5JtGjnglwGdLloMGgyXM=s50-c-k-no" width=115><br><sub>Isaac Jerferson</sub>](https://github.com/guilhermeonrails) |  [<img src="https://avatars.githubusercontent.com/u/160502160?v=4" width=115><br><sub>Raislson Bernardo</sub>](https://github.com/alexfelipe) |
 | :---: | :---: | :---: |
-
-
-> - Função ArrayList<Palestrante> readTxt(), que lê o arquivo .txt gerado pela função baixarTxt, especifica as expressões regulares em variáveis, e lê cada linha do arquivo de texto via Scanner - while (sc.hasNextLine()) - sendo que, para cada linha, as exp. regulares são verificadas com o método da classe Pattern [...]. Como o Scanner lê cada linha uma vez, podemos garantir que os dados serão pegos de forma ordenada e padronizada, podendo utilizar o switch...case para controlar os dados que serão limitados via regex. Os dados obtidos são imediatamente salvos em um objeto do tipo Palestrante, que no final, resultam em todos os palestrantes, e são armazenados em uma lista.
