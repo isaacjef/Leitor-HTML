@@ -49,6 +49,9 @@
 - **TratarDados:**
 <img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
 
+- **Database:**
+<img width="1477" height="545" alt="image" src="https://github.com/user-attachments/assets/d213fe9b-c247-42cb-a8b7-0153d91b9c45" />
+
 # 🔧 Principais Funções:
 > - Função para baixar páginas .html e converter para .txt, através de métodos que baixam conteúdo de uma url dada e reescrevem cada linha deste arquivo(.html) um um novo arquivo, no diretório programado.
 > - Função para baixar imagens de uma de uma determinada URL, baixada via método RenderedImage (caso queiram explicar), e armazenada em um diretório programado.
