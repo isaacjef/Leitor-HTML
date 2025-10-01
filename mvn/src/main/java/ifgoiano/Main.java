@@ -1,25 +1,29 @@
 package ifgoiano;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-        String urlPagina = "https://eventos.ifgoiano.edu.br/integra2025/"; // Substitua pelo URL da página que quer baixar
-        String nomeArquivo = "/eventos_ifgoiano.txt";
+        // Declaração de variaveis
+        String urlPagina = "https://eventos.ifgoiano.edu.br/integra2025/";
         TratarDados tratador = new TratarDados();
+        Database event = new Database("event");
+        ArrayList<Palestrante> pales = new ArrayList<>();
         
         try {
-            // Baixar página html e converter para txt
-            //baixarHTML(urlPagina, nomeArquivo);
+            tratador.baixarHTML(urlPagina, "eventos_ifgoiano.txt");
 
-            // Cria conexão com o banco de dados
-            Database event = new Database("event");
+            // Criar conexão com o banco de dados
             event.connect();
             
-            //ArrayList<Palestrante> palestrantes = tratador.readTxt();
-            //event.inserirPalestrantes(palestrantes);
+            pales = tratador.readTxt();
+            event.inserirPalestrantes(pales);
+            System.out.println("Conexão; "+ event.connect());
+            event.inserirPalestrantes(pales);
+            event.listarPalestrantes();
             //event.deletarTabela();
-            //event.listarPalestrantes();
-            event.listarPalestrante();
+            System.out.println("Desconexão; "+ event.disconnect());
         } catch (Exception e) {
             System.err.println("Generic Error: " + e.getMessage());
         }

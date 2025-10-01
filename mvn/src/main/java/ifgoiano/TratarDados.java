@@ -21,69 +21,7 @@ import java.util.regex.Pattern;
 import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 
-//https://www.baeldung.com/java-matcher-find-vs-matches
-
 public class TratarDados {
-
-    public void baixarHTML(String urlPagina, String nomeArquivo) {
-        try {
-            URL url = new URI(urlPagina).toURL();
-            BufferedWriter writer;
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) {
-                writer = new BufferedWriter(new FileWriter(nomeArquivo));
-                String linha;
-                while ((linha = reader.readLine()) != null) {
-                    writer.write(linha);
-                    writer.newLine();
-                }
-                System.out.println("Página baixada com sucesso para: " + nomeArquivo);
-            }
-
-            writer.close();
-        } catch (IOException e) {
-           System.err.println("Error reading the file: " + e.getMessage());
-        } catch (URISyntaxException e) {
-           System.err.println("Error na sintaxe URI: " + e.getMessage());
-        }
-    }
-
-    public String baixarImagem(String urlImagem, String nomeImagem) throws URISyntaxException, IOException {
-        File arquivo = null;
-        RenderedImage imagem = null;
-
-        try{
-            URL url2 = new URI(urlImagem).toURL();
-            imagem = ImageIO.read(url2);
-        } catch(IIOException e) {
-            System.err.println("Erro no carregamento da URL -> javax.imageio.IIOException: Can't get input stream from URL!");
-            URL url = new URI("https://ifgoiano.edu.br/home/images/TRIN/selecoes/pss2026_tec_tri/noticia_2026.png").toURL();
-            imagem = ImageIO.read(url);
-            //e.printStackTrace();
-        }
-        
-        try {
-            //System.out.println("Imagem : " + imagem);
-            Path caminhoArquivo = Paths.get(nomeImagem + ".png");
-            String caminhoPasta = System.getProperty("user.dir") + File.separator + "download\\";
-            arquivo = new File(caminhoPasta + caminhoArquivo);
-
-            boolean sucesso = ImageIO.write(imagem, "png", arquivo);
-
-            if (sucesso) {
-                System.out.println("Imagem salva com sucesso em: " + arquivo.getAbsolutePath());
-            } else {
-                System.out.println("ERRO! Imagem não foi salva.");
-                arquivo = null;
-            }
-        } catch(IllegalArgumentException e) {
-            e.printStackTrace();
-        }  catch(Exception e){
-            e.printStackTrace();
-        }
-
-        return arquivo.getAbsolutePath();
-        // Criar cat ch para pegar imagem padrão quando não houver imagem do palestrante em questão.
-    }
 
     public ArrayList<Palestrante> readTxt() throws FileNotFoundException, URISyntaxException, IOException {
 
@@ -123,10 +61,8 @@ public class TratarDados {
                     Matcher matcherImagem = regexImagem.matcher(texto);
                     if (matcherImagem.find()) {
                         // /media/static/palestrantes/[nome...].png
-                        //String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
-                        //palestrante.setDiretorioImage(imagem[1]);
                         String[] imagem = matcherImagem.group(0).split("<img src=\"" + "|\" alt=\"Palestrante\"");
-                        String urlImg = "https://eventos.ifgoiano.edu.br/integra2025" + imagem[1];
+                        String urlImg = "https://eventos.ifgoiano.edu.br/" + imagem[1];
                         String[] palestranteImg = imagem[1].split("/media/static/palestrantes/"+"|/static//assets/images/"+ "|.png");
                         
                         String diretorio = this.baixarImagem(urlImg, palestranteImg[1]);
@@ -173,5 +109,76 @@ public class TratarDados {
         sc.close();
 
         return new ArrayList<>(array_aux);
+    }
+
+    public void baixarHTML(String urlPagina, String nomeArquivo) {
+        try {
+            URL url = new URI(urlPagina).toURL();
+            BufferedWriter writer;
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) {
+                writer = new BufferedWriter(new FileWriter(nomeArquivo));
+                String linha;
+                while ((linha = reader.readLine()) != null) {
+                    writer.write(linha);
+                    writer.newLine();
+                }
+                System.out.println("Página baixada com sucesso para: " + nomeArquivo);
+            }
+
+            writer.close();
+        } catch (IOException e) {
+           System.err.println("Error reading the file: " + e.getMessage());
+        } catch (URISyntaxException e) {
+           System.err.println("Error na sintaxe URI: " + e.getMessage());
+        }
+    }
+
+    public String baixarImagem(String urlImagem, String nomeImagem) throws URISyntaxException, IOException {
+        File arquivo = null;
+        RenderedImage imagem;
+        String diretorioProjeto = System.getProperty("user.dir");
+        File arquivoImg = new File(diretorioProjeto + "/download/" + nomeImagem + ".png");
+
+        if(arquivoImg.exists()){
+            System.out.println("Imagem já existe!");
+            return arquivoImg.toString();
+        } else {
+            try{
+                URL url = new URI(urlImagem).toURL();
+                imagem = ImageIO.read(url);
+            } catch(IIOException e) {
+                System.err.println("\nErro no carregamento da URL -> javax.imageio.IIOException: Can't get input stream from URL!");
+                URL url = new URI("https://ifgoiano.edu.br/home/images/TRIN/selecoes/pss2026_tec_tri/noticia_2026.png").toURL();
+                imagem = ImageIO.read(url);
+            }
+            
+            try {
+                Path caminhoArquivo = Paths.get(nomeImagem + ".png");
+                String caminhoPasta = System.getProperty("user.dir") + File.separator + "download\\";
+                arquivo = new File(caminhoPasta + caminhoArquivo);
+
+                //Caso a URL não for inválida, e não possuir nenhuma imagem.
+                if (imagem == null) {
+                    System.err.println("URL inválida! -> java.lang.IllegalArgumentException: image == null!");
+                    URL url = new URI("https://ifgoiano.edu.br/home/images/TRIN/selecoes/pss2026_tec_tri/noticia_2026.png").toURL();
+                    imagem = ImageIO.read(url);
+                }
+
+                boolean sucesso = ImageIO.write(imagem, "png", arquivo);
+
+                if (sucesso) {
+                    System.out.println("Imagem salva com sucesso em: " + arquivo.getAbsolutePath());
+                } else {
+                    System.out.println("ERRO! Imagem não foi salva.");
+                    arquivo = null;
+                }
+            } catch(IllegalArgumentException e) {
+                e.printStackTrace();
+            }  catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return arquivo.getAbsolutePath();
     }
 }
