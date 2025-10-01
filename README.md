@@ -56,11 +56,12 @@
 
 # 🔧 Principais Funções:
 - **TratarDados:**
+
 As funções `baixarHTML()` e `baixarImagem()` funcionam de forma semelhante. Via parâmetro, definimos a URL, seja de algum site ou de alguma imagem hospedada, e o nome com o qual o arquivo será salvo. A partir da classe URL, cria-se objetos url com as urls informadas, e por fim, os arquivos são baixados via: `BufferedReader(new InputStreamReader(url.openStream()))` para HTML, e `ImageIO.read(url)`, para imagens.
 Para salvar o arquivo HTML como .txt, lê-se cara linha do objeto BufferedReader através de um while, e reescreve-se em um novo arquivo, com a classe `BufferedWriter` e o método `BufferedWriter.write()`. Já as imagens, são salvas no diretório programado com o método `ImageIO.write(...)`.
 
 **Como os dados foram buscados e armazenados?** Podemos dividir estes processos em duas etapas: busca e armazenamento.
-- O método `readTxt()`, que faz a busca de dados, é o responsável pela leitura e filtragem dos dados dos palestrantes. A filtragem é feita a partir de métodos da classe *java.util.regex*: `Pattern.compile(regex)`; `Pattern.matcher("linha do arquivo")`
+O método `readTxt()`, que faz a busca de dados, é o responsável pela leitura e filtragem dos dados dos palestrantes. A filtragem é feita a partir de métodos da classe *java.util.regex*: `Pattern.compile(regex)`; `Pattern.matcher("linha do arquivo")`
 
 A expressão regular em Java é definida como uma String, porém, precisa ser compilada em uma instância da classe Matcher, para que seja possível utilizar os métodos de verificação de padrões da mesma, como `Matcher.matches()`, que checa se um determinado conjunto de caracteres bate com a expressão regular definida:
 > <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
