@@ -57,7 +57,7 @@
 # 🔧 Principais Funções:
 - **TratarDados:**
 
-As funções `baixarHTML()` e `baixarImagem()` funcionam de forma semelhante. Via parâmetro, definimos a URL, seja de algum site ou de alguma imagem hospedada, e o nome com o qual o arquivo será salvo. A partir da classe URL, cria-se objetos url com as urls informadas, e por fim, os arquivos são baixados via: `BufferedReader(new InputStreamReader(url.openStream()))` para HTML, e `ImageIO.read(url)`, para imagens.
+As funções `baixarHTML()` e `baixarImagem()` funcionam de forma semelhante. Via parâmetro, definimos a URL, quer seja de um site ou de alguma imagem hospedada, e o nome com o qual o arquivo será salvo. A partir da classe URL, cria-se objetos url com as urls informadas, e por fim, os arquivos são baixados via: `BufferedReader(new InputStreamReader(url.openStream()))` para HTML, e `ImageIO.read(url)`, para imagens.
 Para salvar o arquivo HTML como .txt, lê-se cara linha do objeto BufferedReader através de um while, e reescreve-se em um novo arquivo, com a classe `BufferedWriter` e o método `BufferedWriter.write()`. Já as imagens, são salvas no diretório programado com o método `ImageIO.write(...)`.
 
 **Como os dados foram buscados e armazenados?** Podemos dividir estes processos em duas etapas: busca e armazenamento.
