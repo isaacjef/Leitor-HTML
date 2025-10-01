@@ -1,8 +1,6 @@
 # 👓 Leitor HTML
 **Objetivo:** desenvolver um código que receba o código fonte do site de eventos, do IF Goiano, baixe a página e transforme em um arquivo .txt, e a partir daí, que busque pelos dados dos palestrantes, através de REGEX, e salve-os num banco de dados.
 
-
-
 # 📜 Tarefas:
     (1) [ X ] Extrair código fonte o site de eventos e salvar em txt;
     (2) [ X ] Ler TXT para extrair os dados dos palestrantes;
