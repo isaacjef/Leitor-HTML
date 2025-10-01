@@ -51,6 +51,7 @@ Resumindo o projeto pra apresentação:
 # ♻️ Fluxograma:
 <img width="1193" height="597" alt="image" src="https://github.com/user-attachments/assets/f1521501-d687-4373-b31b-baf91fce2bed" />
 
+# Casos alternativos | Detalhamento
 
 
 # ✒️ Autores: 
