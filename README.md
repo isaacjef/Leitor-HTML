@@ -24,17 +24,17 @@
 
 # 📦 Disposição do programa:
      .
-     ├── Busca-Palestrantes
-     │   ├── src
-     |   |    ├── Database.java
-     │   │    ├── Main.java
-     |   |    ├── Palestrante.java
-     |   |    └── TratarDados.java
-     │   ├── download
-     |   |    ├── imagem1.png 
-     |   |    └── imagem2.png
-     |   └── db
-     |        └── event.db    
+     ├── Leitor-HTML
+     │    ├── src
+     │    │    ├── Database.java
+     │    │    ├── Main.java
+     │    │    ├── Palestrante.java
+     │    │    └── TratarDados.java
+     │    ├── download
+     │    │    ├── imagem1.png 
+     │    │    └── imagem2.png
+     │    └── db
+     │         └── event.db    
      ├── README.md
      └── eventos_ifgoiano.txt
      .
