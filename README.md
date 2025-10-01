@@ -64,6 +64,7 @@ Como os dados foram buscados e armazenados? Podemos dividir estes processos em d
 
 A expressão regular em Java é definida como uma String, porém, precisa ser compilada em uma instância da classe Matcher, para que seja possível utilizar os métodos de verificação de padrões dela, como `Matcher.matches()`, que checa se um determinado conjunto de caracteres bate com a expressão regular definida:
 > <img width="785" height="92" alt="image" src="https://github.com/user-attachments/assets/e49256aa-912a-4cda-90db-22b00ed2737d" />
+
 > .  .  .
 > <img width="414" height="163" alt="image" src="https://github.com/user-attachments/assets/627347b3-3da3-4048-b9bb-5a25ebbe4dcf" />
 
