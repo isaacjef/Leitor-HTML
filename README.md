@@ -52,7 +52,8 @@ Resumindo o projeto pra apresentação:
 <img width="1193" height="597" alt="image" src="https://github.com/user-attachments/assets/f1521501-d687-4373-b31b-baf91fce2bed" />
 
 # MAIS
-<img width="1018" height="298" alt="image" src="https://github.com/user-attachments/assets/1436a408-5b3d-42a5-b20d-fd1af9997c9d" />
+<img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
+
 
 
 # ✒️ Autores: 
