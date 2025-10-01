@@ -38,7 +38,8 @@
 <img width="1013" height="684" alt="image" src="https://github.com/user-attachments/assets/a86c55d5-9baa-4743-9ecf-9c4e50517da9" />
 
 # ♻️ Fluxograma:
-<img width="1193" height="596" alt="image" src="https://github.com/user-attachments/assets/e72851d3-9309-4a92-9b95-61594efc053f" />
+<img width="1193" height="597" alt="image" src="https://github.com/user-attachments/assets/f1521501-d687-4373-b31b-baf91fce2bed" />
+
 
 # 🔧 Principais Funções:
 
