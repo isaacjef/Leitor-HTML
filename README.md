@@ -43,9 +43,9 @@
 - **Database**, que funciona como uma ponte entre o banco de dados e nossa aplicação. E, definição de métodos que fazem a criação de tabelas, inserção de dados, exclusão de tabela e listagem de dados armazenados no BD.
 
 # ♻️ Fluxograma:
- ## **Main:**
+- **Main:**
 <img width="1193" height="597" alt="image" src="https://github.com/user-attachments/assets/f1521501-d687-4373-b31b-baf91fce2bed" />
- ## **TratarDados:**
+- **TratarDados:**
 <img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/fee0bd1c-67d5-42f4-a0f0-ea0b1720b8e2" />
 
 # 🔧 Principais Funções:
