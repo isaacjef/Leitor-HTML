@@ -15,11 +15,8 @@ public class Main {
             tratador.baixarHTML(urlPagina, "eventos_ifgoiano.txt");
 
             // Criar conexão com o banco de dados
-            event.connect();
-            
-            pales = tratador.readTxt();
-            event.inserirPalestrantes(pales);
             System.out.println("Conexão; "+ event.connect());
+            pales = tratador.readTxt();
             event.inserirPalestrantes(pales);
             event.listarPalestrantes();
             //event.deletarTabela();
