@@ -34,7 +34,8 @@
      └── eventos_ifgoiano.txt
      .
 
-# 📚 Definição das classes:
+# 📚 Classes:
+<img width="1013" height="684" alt="image" src="https://github.com/user-attachments/assets/a86c55d5-9baa-4743-9ecf-9c4e50517da9" />
 
 
 # 🔧 Principais Funções
