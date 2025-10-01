@@ -10,7 +10,12 @@
     (4) [ X ] Criar banco de dados chamado event.db com os dados dos palestrantes.
 
 # 📘 Descrição das tarefas:
-### (3) Formato do event.db:
+### (3) Baixar imagem:
+    Criada diretamente na classe Main.java
+    > A função baixarImagem():
+    → Salva imagem no diretório "download"
+    → Retorna o caminho da imagem, para armazenar no atributo do Palestrante
+### (4) Formato do event.db:
     id INTEGER PRIMARY KEY AUTOINCREMENT;
     name VARCHAR(255) NOT NULL;
     work VARCHAR(255) NOT NULL;
